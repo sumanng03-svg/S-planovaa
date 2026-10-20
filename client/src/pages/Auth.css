@@ -1,0 +1,419 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PLANOVA — Auth Pages (Login & Register) Background & Styling Shapes
+   ═══════════════════════════════════════════════════════════════════ */
+
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: calc(var(--nav-height) + 2rem) var(--space-md) var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+  /* Multi-color ambient background: deep navy, violet, vibrant magenta, and neon cyan */
+  background: 
+    radial-gradient(circle at 12% 18%, rgba(124, 58, 237, 0.35) 0%, transparent 48%),
+    radial-gradient(circle at 88% 82%, rgba(6, 182, 212, 0.28) 0%, transparent 50%),
+    radial-gradient(circle at 80% 15%, rgba(236, 72, 153, 0.22) 0%, transparent 42%),
+    radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.18) 0%, transparent 40%),
+    linear-gradient(180deg, #060814 0%, #0d1226 50%, #070a16 100%);
+}
+
+/* Futuristic geometric grid overlay */
+.auth-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating animated ambient light orbs */
+.auth-bg-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  width: 700px;
+  height: 540px;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.35) 0%, rgba(124, 58, 237, 0.2) 45%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowOrbFloat 10s ease-in-out infinite alternate;
+}
+
+.auth-bg-glow-secondary {
+  position: absolute;
+  bottom: 8%;
+  right: 10%;
+  width: 480px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, rgba(6, 182, 212, 0.16) 55%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowOrbFloat 13s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glowOrbFloat {
+  0%   { transform: translate(-50%, -20%) scale(0.95); opacity: 0.75; }
+  50%  { transform: translate(-46%, -15%) scale(1.08); opacity: 1; }
+  100% { transform: translate(-54%, -25%) scale(0.97); opacity: 0.85; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   DECORATIVE STYLING SHAPES
+   ═══════════════════════════════════════════════════════════════════ */
+
+.auth-shapes-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.auth-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Shape 1: Glowing Neon Ring (Top-Left) */
+.shape-ring-1 {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(#070914, #070914) padding-box,
+    linear-gradient(135deg, #a855f7 0%, #06b6d4 50%, #ec4899 100%) border-box;
+  top: 8%;
+  left: 6%;
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.25);
+  animation: shapeFloat1 12s ease-in-out infinite alternate;
+}
+
+/* Shape 2: Radiant Gradient Ring (Bottom-Right) */
+.shape-ring-2 {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(#070914, #070914) padding-box,
+    linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #8b5cf6 100%) border-box;
+  bottom: 10%;
+  right: 7%;
+  box-shadow: 0 0 30px rgba(236, 72, 153, 0.22);
+  animation: shapeFloat2 14s ease-in-out infinite alternate;
+}
+
+/* Shape 3: Glowing Glass Diamond (Top-Right) */
+.shape-diamond-1 {
+  width: 65px;
+  height: 65px;
+  top: 22%;
+  right: 18%;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.45), rgba(6, 182, 212, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.35);
+  animation: shapeDiamondFloat 8s ease-in-out infinite alternate;
+}
+
+/* Shape 4: Mini Emerald/Cyan Diamond (Bottom-Left) */
+.shape-diamond-2 {
+  width: 44px;
+  height: 44px;
+  bottom: 25%;
+  left: 15%;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(16, 185, 129, 0.3));
+  border: 1px solid rgba(6, 182, 212, 0.45);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+  animation: shapeDiamondFloat 10s ease-in-out infinite alternate-reverse;
+}
+
+/* Shape 5: Tilted Sunset Pill (Top-Right Angle) */
+.shape-pill-1 {
+  width: 130px;
+  height: 38px;
+  top: 14%;
+  right: 28%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.32), rgba(245, 158, 11, 0.22));
+  border: 1px solid rgba(236, 72, 153, 0.45);
+  transform: rotate(-22deg);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
+  animation: shapePillFloat1 11s ease-in-out infinite alternate;
+}
+
+/* Shape 6: Electric Violet Pill (Bottom-Left Angle) */
+.shape-pill-2 {
+  width: 120px;
+  height: 34px;
+  bottom: 16%;
+  left: 25%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.32), rgba(6, 182, 212, 0.25));
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  transform: rotate(18deg);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.22);
+  animation: shapePillFloat2 9s ease-in-out infinite alternate;
+}
+
+/* Shape 7 & 8: Floating Frosted Badges */
+.shape-floating-badge {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge-music {
+  top: 36%;
+  left: 8%;
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #e9d5ff;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.25);
+  animation: badgeFloat1 7s ease-in-out infinite alternate;
+}
+
+.badge-ticket {
+  bottom: 34%;
+  right: 9%;
+  background: rgba(6, 182, 212, 0.18);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #bae6fd;
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.22);
+  animation: badgeFloat2 8.5s ease-in-out infinite alternate;
+}
+
+/* Animations for floating shapes */
+@keyframes shapeFloat1 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(15px, -20px) rotate(45deg); }
+  100% { transform: translate(-10px, 15px) rotate(90deg); }
+}
+
+@keyframes shapeFloat2 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(-18px, 16px) rotate(-40deg); }
+  100% { transform: translate(12px, -18px) rotate(-80deg); }
+}
+
+@keyframes shapeDiamondFloat {
+  0%   { transform: rotate(45deg) translate(0, 0); }
+  50%  { transform: rotate(50deg) translate(-10px, -15px); }
+  100% { transform: rotate(40deg) translate(8px, 12px); }
+}
+
+@keyframes shapePillFloat1 {
+  0%   { transform: rotate(-22deg) translate(0, 0); }
+  100% { transform: rotate(-16deg) translate(-14px, 18px); }
+}
+
+@keyframes shapePillFloat2 {
+  0%   { transform: rotate(18deg) translate(0, 0); }
+  100% { transform: rotate(24deg) translate(16px, -14px); }
+}
+
+@keyframes badgeFloat1 {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-12px) scale(1.03); }
+  100% { transform: translateY(6px) scale(0.98); }
+}
+
+@keyframes badgeFloat2 {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(14px) scale(1.02); }
+  100% { transform: translateY(-8px) scale(0.99); }
+}
+
+/* ── Auth Card — Glassmorphism & High-Contrast Accents ── */
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: linear-gradient(155deg, rgba(16, 21, 38, 0.9) 0%, rgba(10, 14, 27, 0.95) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: var(--radius-2xl, 24px);
+  padding: 2.75rem 2.25rem;
+  box-shadow: 
+    0 30px 75px rgba(0, 0, 0, 0.7),
+    0 0 50px rgba(124, 58, 237, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.16);
+  position: relative;
+  z-index: 1;
+  animation: authCardEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes authCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.auth-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f3e8ff 0%, #c084fc 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-lg);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: var(--transition-fast);
+}
+
+.auth-brand:hover {
+  filter: brightness(1.15);
+}
+
+.auth-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.auth-subtitle {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Form Inputs ── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-form .form-label {
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.auth-form .form-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+}
+
+.auth-form .form-input:focus {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.22);
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 0.95rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-lg);
+}
+
+.auth-switch a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.auth-switch a:hover {
+  color: #c084fc;
+  text-decoration: underline;
+}
+
+/* Demo Credentials Pill */
+.demo-creds {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.demo-label {
+  font-size: 0.82rem;
+  color: #67e8f9;
+  font-weight: 600;
+  flex: 1;
+}
+
+.demo-creds .btn {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.demo-creds .btn:hover {
+  background: rgba(124, 58, 237, 0.25);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Hide extra floating elements on small mobile screens to keep card centered */
+@media (max-width: 768px) {
+  .shape-ring-1, .shape-ring-2 { opacity: 0.4; }
+  .shape-floating-badge { display: none; }
+  .shape-pill-1, .shape-pill-2 { display: none; }
+}

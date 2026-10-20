@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production builds
+client/dist/
+
+# Environment files and credentials
+.env
+.env.*
+server/.env
+client/.env
+!*.env.example
+
+# Uploads directory contents except .gitkeep
+server/uploads/*
+!server/uploads/.gitkeep
+
+# System and IDE files
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.vscode/
+.idea/

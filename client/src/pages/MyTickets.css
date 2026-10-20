@@ -1,0 +1,80 @@
+.my-tickets-page { padding-top: calc(var(--nav-height) + 3rem); padding-bottom: var(--space-3xl); }
+
+.tabs-bar {
+  display: flex; gap: var(--space-sm);
+  border-bottom: 1px solid var(--color-border-soft);
+  margin-bottom: var(--space-xl);
+}
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  background: none; border: none;
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--color-text); }
+.tab-btn.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+
+/* Ticket Cards */
+.tickets-list { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.my-ticket-card {
+  display: flex; gap: var(--space-lg); align-items: center;
+  padding: var(--space-lg); border-radius: var(--radius-lg);
+}
+.mt-event-img-wrap {
+  width: 100px; height: 70px; flex-shrink: 0;
+  border-radius: var(--radius-md); overflow: hidden;
+}
+.mt-event-img-wrap img { width:100%; height:100%; object-fit:cover; }
+
+.mt-info { flex: 1; min-width: 0; }
+.mt-header { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-xs); }
+.mt-category { font-size: 0.75rem; color: var(--color-text-faint); }
+.mt-event-name { font-size: 1rem; font-weight: 700; margin-bottom: var(--space-sm); }
+.mt-meta {
+  display: flex; flex-wrap: wrap; gap: var(--space-md);
+  font-size: 0.82rem; color: var(--color-text-muted);
+}
+.mt-ref { font-size: 0.72rem; color: var(--color-text-faint); font-family: monospace; margin-top: 4px; }
+
+.mt-qr-wrap {
+  padding: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+/* Bookings Table */
+.bookings-table-wrap { overflow-x: auto; }
+.bookings-table {
+  width: 100%; border-collapse: collapse; font-size: 0.88rem;
+}
+.bookings-table th {
+  text-align: left; padding: 0.75rem 1rem;
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--color-text-faint);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--color-border-soft);
+  white-space: nowrap;
+}
+.bookings-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  color: var(--color-text-muted);
+  vertical-align: middle;
+}
+.bookings-table tr:hover td { background: rgba(255,255,255,0.02); }
+.td-event { font-weight: 600; color: var(--color-text); max-width: 200px; }
+.td-event span { display: -webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.text-faint { color: var(--color-text-faint); }
+
+@media (max-width: 640px) {
+  .my-ticket-card { flex-wrap: wrap; }
+  .mt-event-img-wrap { width: 100%; height: 120px; }
+  .mt-qr-wrap { display: none; }
+}
