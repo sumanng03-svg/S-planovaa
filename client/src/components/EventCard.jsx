@@ -40,7 +40,11 @@ export default function EventCard({ event }) {
         />
         <div className="event-card-overlay" />
         <span className={`badge event-card-cat ${catClass}`}>{icon} {event.category}</span>
-        {isSoldOut && <span className="sold-out-badge">Sold Out</span>}
+        {isSoldOut ? (
+          <span className="sold-out-badge">Sold Out</span>
+        ) : (
+          <span className="ticket-badge-pill">PASS #{String(event.id || 1).padStart(4, '0')}</span>
+        )}
       </div>
 
       {/* Content */}
@@ -60,18 +64,25 @@ export default function EventCard({ event }) {
           {event.seats_available !== undefined && (
             <span className="meta-item">
               <span className="meta-icon">🎟️</span>
-              {isSoldOut ? 'No seats left' : `${event.seats_available} seats left`}
+              {isSoldOut ? 'No seats left' : `${event.seats_available} seats remaining`}
             </span>
           )}
+        </div>
+
+        {/* Perforated Ticket Divider */}
+        <div className="ticket-stub-perforation" aria-hidden="true">
+          <span className="notch notch-left" />
+          <div className="dashed-line" />
+          <span className="notch notch-right" />
         </div>
 
         <div className="event-card-footer">
           <div className="event-card-price">
             {isFree ? (
-              <span className="price-free">FREE</span>
+              <span className="price-free">COMPLIMENTARY</span>
             ) : (
               <>
-                <span className="price-label">From</span>
+                <span className="price-label">ENTRY PASS</span>
                 <span className="price-value">₹{parseFloat(event.price).toLocaleString('en-IN')}</span>
               </>
             )}
@@ -81,7 +92,7 @@ export default function EventCard({ event }) {
             className={`btn btn-primary btn-sm ${isSoldOut ? 'btn-disabled' : ''}`}
             aria-label={`View details for ${event.title}`}
           >
-            {isSoldOut ? 'Sold Out' : 'View Details →'}
+            {isSoldOut ? 'Sold Out' : 'Get Pass →'}
           </Link>
         </div>
       </div>

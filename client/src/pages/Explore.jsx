@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import EventCard from '../components/EventCard';
+import { MOCK_EVENTS } from '../services/mockData';
 import './Explore.css';
 
 const CATEGORIES = ['', 'Music', 'Technology', 'Workshops', 'College Events', 'Art', 'Sports'];
@@ -31,10 +32,15 @@ export default function Explore() {
       params.set('limit', '24');
 
       const { data } = await api.get(`/events?${params}`);
-      setEvents(data.data || []);
-      setTotal(data.pagination?.total || 0);
+      const loaded = (data.data && data.data.length > 0) ? data.data : MOCK_EVENTS;
+      setEvents(loaded);
+      setTotal(data.pagination?.total || loaded.length);
     } catch {
-      setError('Failed to load events. Please try again.');
+      let filtered = [...MOCK_EVENTS];
+      if (search) filtered = filtered.filter(e => e.title.toLowerCase().includes(search.toLowerCase()) || e.venue.toLowerCase().includes(search.toLowerCase()));
+      if (category) filtered = filtered.filter(e => e.category === category);
+      setEvents(filtered);
+      setTotal(filtered.length);
     } finally {
       setLoading(false);
     }

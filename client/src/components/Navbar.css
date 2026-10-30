@@ -1,13 +1,20 @@
-/* Navbar Styles */
+/* Navbar Styles — Floating Frosted Island Format */
 .navbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 14px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1200px;
   z-index: 1000;
-  height: var(--nav-height);
-  background: rgba(8, 12, 20, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--color-border-soft);
+  height: 64px;
+  background: rgba(14, 14, 18, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(255, 255, 255, 0.04);
   transition: var(--transition);
 }
 
@@ -16,6 +23,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  padding: 0 var(--space-md);
   gap: var(--space-xl);
 }
 
@@ -30,14 +38,14 @@
 .brand-icon {
   font-size: 1.4rem;
   color: var(--color-accent);
-  filter: drop-shadow(0 0 8px rgba(168,85,247,0.7));
+  filter: drop-shadow(0 0 8px var(--color-primary-glow));
 }
 .brand-name {
   font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: 0.06em;
-  background: linear-gradient(135deg, #e2d9f3, #a855f7);
+  background: var(--grad-purple);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -117,7 +125,7 @@
   position: absolute;
   top: var(--nav-height);
   left: 0; right: 0;
-  background: rgba(10, 14, 24, 0.98);
+  background: var(--color-surface, rgba(10, 14, 24, 0.98));
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border-soft);
   padding: var(--space-lg) var(--space-md);
@@ -134,7 +142,7 @@
   transition: var(--transition);
 }
 .mobile-menu a:hover {
-  background: rgba(124,58,237,0.12);
+  background: var(--color-primary-glow);
   color: var(--color-text);
 }
 .mobile-auth {

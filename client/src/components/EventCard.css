@@ -1,10 +1,22 @@
+/* Event Card — Ticket-Stub Perforated Format */
 .event-card {
   display: flex;
   flex-direction: column;
+  position: relative;
+  background: var(--grad-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: var(--transition-slow);
-  cursor: default;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.1);
 }
 
 /* Image */
@@ -16,20 +28,37 @@
 .event-card-img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.event-card:hover .event-card-img { transform: scale(1.06); }
+.event-card:hover .event-card-img { transform: scale(1.08); }
+
 .event-card-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(8,12,20,0.85) 100%);
+  background: linear-gradient(to bottom, transparent 35%, rgba(7, 7, 10, 0.85) 100%);
 }
+
 .event-card-cat {
   position: absolute; top: 12px; left: 12px;
   font-size: 0.72rem;
+  backdrop-filter: blur(8px);
 }
+
+.ticket-badge-pill {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  background: rgba(0, 0, 0, 0.65);
+  color: #a1a1aa;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
 .sold-out-badge {
   position: absolute; top: 12px; right: 12px;
-  background: rgba(239,68,68,0.85);
+  background: rgba(239, 68, 68, 0.85);
   color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
@@ -49,10 +78,12 @@
 }
 
 .event-card-title {
-  font-size: 1.05rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--color-text);
-  line-height: 1.3;
+  line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -62,19 +93,50 @@
 .event-card-meta {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.82rem;
   color: var(--color-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.meta-icon { font-size: 0.9rem; flex-shrink: 0; }
+.meta-icon { font-size: 0.88rem; flex-shrink: 0; opacity: 0.85; }
+
+/* ─── Perforated Ticket Stub Notch ─── */
+.ticket-stub-perforation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: var(--space-xs) calc(-1 * var(--space-lg));
+  height: 20px;
+}
+.ticket-stub-perforation .notch {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--color-bg);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+.ticket-stub-perforation .notch-left {
+  left: -9px;
+}
+.ticket-stub-perforation .notch-right {
+  right: -9px;
+}
+.ticket-stub-perforation .dashed-line {
+  width: 100%;
+  border-top: 1.5px dashed rgba(255, 255, 255, 0.15);
+  margin: 0 12px;
+}
 
 /* Footer */
 .event-card-footer {
@@ -82,21 +144,21 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border-soft);
+  padding-top: var(--space-xs);
 }
-.event-card-price { display: flex; align-items: baseline; gap: 4px; }
-.price-label { font-size: 0.75rem; color: var(--color-text-faint); }
+.event-card-price { display: flex; flex-direction: column; }
+.price-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-faint); }
 .price-value {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--color-text);
 }
 .price-free {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--color-success);
-  letter-spacing: 0.05em;
 }

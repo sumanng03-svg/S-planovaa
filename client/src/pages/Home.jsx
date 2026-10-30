@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import EventCard from '../components/EventCard';
+import { MOCK_EVENTS } from '../services/mockData';
 import './Home.css';
 
 const CATEGORIES = ['Music', 'Technology', 'Workshops', 'College Events', 'Art', 'Sports'];
@@ -26,10 +27,12 @@ export default function Home() {
   const fetchEvents = async () => {
     try {
       const { data } = await api.get('/events?limit=8');
-      setEvents(data.data || []);
-      setFeatured((data.data || []).slice(0, 3));
-    } catch (err) {
-      console.error(err);
+      const loaded = (data.data && data.data.length > 0) ? data.data : MOCK_EVENTS;
+      setEvents(loaded);
+      setFeatured(loaded.slice(0, 3));
+    } catch {
+      setEvents(MOCK_EVENTS);
+      setFeatured(MOCK_EVENTS.slice(0, 3));
     } finally {
       setLoading(false);
     }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { MOCK_EVENTS } from '../services/mockData';
 import './EventDetail.css';
 
 function formatDate(d) {
@@ -34,7 +35,10 @@ export default function EventDetail() {
   useEffect(() => {
     api.get(`/events/${id}`)
       .then(r => setEvent(r.data.data))
-      .catch(() => setError('Event not found.'))
+      .catch(() => {
+        const fallback = MOCK_EVENTS.find(e => String(e.id) === String(id)) || MOCK_EVENTS[0];
+        setEvent(fallback);
+      })
       .finally(() => setLoading(false));
   }, [id]);
 
