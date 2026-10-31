@@ -43,12 +43,15 @@ app.get('/api/health', (req, res) => {
 
 // Serve static frontend build if present (enables single-service all-in-one deployment)
 const fs = require('fs');
-const clientDist = path.join(__dirname, '../client/dist');
-if (fs.existsSync(clientDist)) {
+const clientDist = path.resolve(__dirname, '../client/dist');
+const indexHtml = path.resolve(clientDist, 'index.html');
+if (fs.existsSync(indexHtml)) {
   app.use(express.static(clientDist));
   app.use((req, res, next) => {
     if (req.method === 'GET' && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
-      return res.sendFile(path.join(clientDist, 'index.html'));
+      return res.sendFile(indexHtml, (err) => {
+        if (err) next(err);
+      });
     }
     next();
   });
