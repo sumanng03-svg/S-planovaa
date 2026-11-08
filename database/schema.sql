@@ -1,4 +1,4 @@
--- PLANOVA Database Schema
+bookings-- PLANOVA Database Schema
 -- Run this file first, then seed.sql
 
 CREATE DATABASE IF NOT EXISTS planova CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
