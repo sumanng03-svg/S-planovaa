@@ -34,9 +34,10 @@ router.post(
         [name, email, hash, 'user']
       );
 
+      const jwtSecret = process.env.JWT_SECRET || 'planova_super_secret_jwt_key_2026_cse_project_secure_hash';
       const token = jwt.sign(
         { id: result.insertId, email, name, role: 'user' },
-        process.env.JWT_SECRET,
+        jwtSecret,
         { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
       );
 
@@ -85,9 +86,10 @@ router.post(
         return res.status(401).json({ success: false, message: 'Invalid email or password.' });
       }
 
+      const jwtSecret = process.env.JWT_SECRET || 'planova_super_secret_jwt_key_2026_cse_project_secure_hash';
       const token = jwt.sign(
         { id: user.id, email: user.email, name: user.name, role: user.role },
-        process.env.JWT_SECRET,
+        jwtSecret,
         { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
       );
 
