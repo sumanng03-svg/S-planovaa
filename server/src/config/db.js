@@ -4,18 +4,25 @@ const mockStore = require('./mockStore');
 let pool = null;
 let useMock = false;
 
+const poolConfig = {
+  host:            process.env.DB_HOST     || 'localhost',
+  port:            parseInt(process.env.DB_PORT) || 3306,
+  user:            process.env.DB_USER     || 'root',
+  password:        process.env.DB_PASSWORD || '',
+  database:        process.env.DB_NAME     || 'planova',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit:      0,
+  timezone:        '+00:00',
+};
+
+// If connecting to cloud DB (like TiDB, Aiven, or any non-localhost host), enable SSL
+if (poolConfig.host && poolConfig.host !== 'localhost' && poolConfig.host !== '127.0.0.1') {
+  poolConfig.ssl = { minVersion: 'TLSv1.2', rejectUnauthorized: true };
+}
+
 try {
-  pool = mysql.createPool({
-    host:            process.env.DB_HOST     || 'localhost',
-    port:            parseInt(process.env.DB_PORT) || 3306,
-    user:            process.env.DB_USER     || 'root',
-    password:        process.env.DB_PASSWORD || '',
-    database:        process.env.DB_NAME     || 'planova',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit:      0,
-    timezone:        '+00:00',
-  });
+  pool = mysql.createPool(poolConfig);
 } catch (err) {
   console.warn('⚠️ Could not create MySQL pool. Falling back to in-memory store.');
   useMock = true;
